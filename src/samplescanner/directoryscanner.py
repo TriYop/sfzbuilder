@@ -13,5 +13,4 @@ class DirectoryScanner():
                 if entry.is_file() :
                     # and len(entry.name)>3 and  entry.name[-3:] in formats
                     samples.append(SampleAnalyzer(entry.name).analyze())
-        print(samples)
         return samples
