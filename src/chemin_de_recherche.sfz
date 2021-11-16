@@ -1,0 +1,16 @@
+<control>
+default_path=chemin_de_recherche
+
+<global>
+
+volume=0
+
+<group>
+
+<region>
+sample=sample_path.wav
+lokey=60
+hikey=60
+pitch_keycenter=60
+lovel=0
+hivel=127
