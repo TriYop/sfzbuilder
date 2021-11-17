@@ -37,7 +37,7 @@ def generate_soundfont_from_samples(samples:list) -> Soundfont:
     sf.add_group(gp)
     return sf
 
-def scan_dir_for_samples(scan_path:str) -> Soundfont:
+def scan_dir_for_samples(scan_path:str, mode:str, velocity:bool) -> Soundfont:
     """Generates a sforzando soundfont from a directory"""
     logger.info(f"Starting scan for samples in {scan_path}")
     ds = DirectoryScanner(scan_path)
@@ -56,10 +56,15 @@ if __name__ == '__main__':
 
     parser = argparse.ArgumentParser(description="Builds a SFZ from a directory containing samples")
     parser.add_argument("path", type=str, nargs=1, help="path to the samples directory")
+    mode_group= parser.add_mutually_exclusive_group()
+    mode_group.add_argument("-m", dest='mode', action='store_const', const='melodic', help="sets parse mode to melodic")
+    mode_group.add_argument("-d", dest='mode', action='store_const', const='drumset', default="melodic", help="sets parse mode to drumset")
+    parser.add_argument("-v", dest='velocity', action='store_true', help="activates multiple velocities per note")
 
     args = parser.parse_args()
     scan_path = args.path[0]
-    sf = scan_dir_for_samples(scan_path)
+    mode = args.mode
+    sf = scan_dir_for_samples(scan_path, mode=mode, velocity=args.velocity)
 
     #if not os.path.exists(f"{scan_path}.sfz"):
     with open(f"{scan_path}.sfz", "w") as sfz:

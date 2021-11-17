@@ -12,5 +12,7 @@ class DirectoryScanner():
             for entry in it:
                 if entry.is_file() :
                     # and len(entry.name)>3 and  entry.name[-3:] in formats
-                    samples.append(SampleAnalyzer(entry.name).analyze())
+                    smpl_info= SampleAnalyzer(entry.name).analyze()
+                    if smpl_info is not None:
+                        samples.append(smpl_info)
         return samples
