@@ -36,5 +36,7 @@ class SampleAnalyzer():
     def analyze(self):
         return {
             "path": self.sample_filename,
-            "key": self._get_sample_key()
+            "key": self._get_sample_key(),
+            "lovel": 0,
+            "hivel": 127,
         }

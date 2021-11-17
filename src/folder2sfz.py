@@ -19,17 +19,18 @@ def generate_soundfont_from_samples(samples:list) -> Soundfont:
 
     for sample in samples:
         reg = Region()
-        reg.set_param("sample", sample['path'])
-        reg.set_param("lokey", sample['key'])
-        reg.set_param("hikey", sample['key'])
-        reg.set_param("pitch_keycenter", sample['key'])
-        reg.set_param("lovel", 0)
-        reg.set_param("hivel", 127)
+        reg.set_param("sample", sample.get('path',""))
+        reg.set_param("lokey", sample.get('key',60))
+        reg.set_param("hikey", sample.get('key',60))
+        reg.set_param("pitch_keycenter", sample.get('key',60))
+        reg.set_param("lovel", sample.get('lovel',0))
+        reg.set_param("hivel", sample.get('hivel',127))
+        reg.set_param("volume", sample.get('volume', 6))
         gp.add_region(reg)
 
     sf.set_param("volume", "0")
     sf.set_param("ampeg_attack", "0.001")
-    sf.set_param("ampeg_release", "0.7")
+    sf.set_param("ampeg_release", "0.15")
     sf.set_param("ampeg_dynamic", "1")
 
 
