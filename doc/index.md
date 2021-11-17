@@ -8,7 +8,7 @@ It is named after the samples directory with appended `.sfz` suffix
 
     python3 folder2sfz.py /home/user/samples/PIANO
 
-will scan `piano` folder in `/home/user/samples/` and generate 
+will scan `PIANO` folder in `/home/user/samples/` and generate 
 `/home/user/samples/PIANO.sfz` file
 
 ## How to name samples 
@@ -26,7 +26,7 @@ an octave number from -1 (minus one) to 9 (nine).
 valid sample names would be:
 
     piano_C3.wav
-    piano_Db.aif
-    piano_D.mp3
-    piano_D#.ogg
+    piano_Db3.aif
+    piano_D3.mp3
+    piano_D#3.ogg
 
