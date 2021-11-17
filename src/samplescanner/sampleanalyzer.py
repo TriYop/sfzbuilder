@@ -27,10 +27,7 @@ class SampleAnalyzer():
         m = re.search(r'_([A-G][#b]?)(-?[0-9])[_\.]', self.sample_filename)
         pitch = 60
         if m is not None:
-
             keydef= m.group(1)
-            self.logger.info(keydef)
-            self.logger.info(m.group(2))
             octave= int(m.group(2))
             pitch= self.KEYS.get(keydef, 0) + 12*(octave+1)
 
@@ -39,6 +36,5 @@ class SampleAnalyzer():
     def analyze(self):
         return {
             "path": self.sample_filename,
-            "key": self._get_sample_key(),
-
+            "key": self._get_sample_key()
         }
