@@ -1,3 +1,7 @@
+"""SFZBuilder
+---
+Sample filename analyzer
+"""
 import re
 import logging
 
@@ -53,7 +57,8 @@ class SampleAnalyzer():
     # sample filename field separator (we do not only support _ (underscore) but also . (dot) and - (dash).
     FIELD_SEPARATOR_REX = r'[_\.\-]'
     # Filename may be composed of at least one sample and contain much fields.
-    FILENAME_REX = rf'^{SAMPLE_NAME_REX}(({FIELD_SEPARATOR_REX}({KEYS_REX}|{ARTICULATION_REX}|{DRUM_REX}))+{SAMPLE_TYPE_REX})$'
+    FILENAME_REX = rf'^{SAMPLE_NAME_REX}(({FIELD_SEPARATOR_REX}({KEYS_REX}|{ARTICULATION_REX}|{DRUM_REX}))+' \
+                   rf'{SAMPLE_TYPE_REX})$'
 
     logger = logging.getLogger("SampleAnalyzer")
 
@@ -64,7 +69,9 @@ class SampleAnalyzer():
         self.sample_filename = filename
 
     def _get_sample_key(self) -> int:
-        """Get sample key from filename."""
+        """Get sample key from filename.
+        We are using REGEX patterns for this rather than direct matching
+        """
         rex = rf'{self.FIELD_SEPARATOR_REX}{self.KEYS_REX}{self.FIELD_SEPARATOR_REX}'
         m = re.search(rex, self.sample_filename)
         pitch = 60
@@ -76,7 +83,9 @@ class SampleAnalyzer():
         return pitch
 
     def _get_sample_vel(self):
-        """Get sample velocity from filename."""
+        """Get sample velocity from filename.
+        We are using REGEX patterns for this rather than direct matching
+        """
         rex = rf'{self.FIELD_SEPARATOR_REX}{self.ARTICULATION_REX}{self.FIELD_SEPARATOR_REX}'
         m = re.search(rex, self.sample_filename)
         velocity = 100
@@ -87,7 +96,7 @@ class SampleAnalyzer():
         return velocity
 
     def analyze(self):
-        """Launches analysis"""
+        """Launches analysis of the sample file"""
         # TODO: use only sample velocity here and apply velocity range in the soundbank (actual mapping will depend on
         #  the different available velocities).
         if re.match(self.FILENAME_REX, string=self.sample_filename):

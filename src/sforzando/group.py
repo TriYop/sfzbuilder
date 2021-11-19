@@ -1,3 +1,7 @@
+"""SFZBuilder
+---
+Sforzando Group
+"""
 class Group():
     """A SFZ Group entry"""
 

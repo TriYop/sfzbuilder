@@ -1,13 +1,12 @@
+"""SFZBuilder
+---
+Main application entry point.
+"""
 from sforzando import Soundfont, Control, Group, Region
 from samplescanner import DirectoryScanner
 import os.path
 import argparse
 import logging
-
-"""
-
-"""
-
 
 def generate_soundfont_from_samples(samples: list) -> Soundfont:
     """Generate the soundbank from the provided samples definition
@@ -20,8 +19,8 @@ def generate_soundfont_from_samples(samples: list) -> Soundfont:
     sf.add_control(ct)
 
     gp = Group()
-
     for sample in samples:
+        # Sets sample guessed parameters or default ones
         reg = Region()
         reg.set_param("sample", sample.get('path', ""))
         reg.set_param("lokey", sample.get('key', 60))
@@ -60,6 +59,9 @@ def scan_dir_for_samples(scan_path: str, mode: str = "melodic", velocity: bool =
 logger = logging.getLogger("folder2sfz")
 
 if __name__ == '__main__':
+    """
+     Here is the main entry point.
+    """
     logging.basicConfig(level=logging.INFO)
 
     parser = argparse.ArgumentParser(description="Builds a SFZ from a directory containing samples")

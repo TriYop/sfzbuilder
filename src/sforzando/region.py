@@ -1,4 +1,7 @@
-
+"""SFZBuilder
+---
+Sforzando region
+"""
 class Region():
     def __init__(self):
         """Create a new region with its own parameters"""

@@ -1,4 +1,9 @@
+"""SFZBuilder
+---
+Sforzando sound bank
+"""
 from . import Group, Region, Control
+
 
 class Soundfont():
     """A whole soundbank"""

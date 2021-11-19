@@ -1,3 +1,7 @@
+"""SFZBuilder
+---
+Sforzando Control
+"""
 class Control():
     """Control associated to a sound bank"""
 

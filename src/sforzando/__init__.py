@@ -1,4 +1,7 @@
-""" sforzando export module"""
+"""SFZBuilder
+---
+Sforzando export module
+"""
 from .control import *
 from .group import *
 from .region import *

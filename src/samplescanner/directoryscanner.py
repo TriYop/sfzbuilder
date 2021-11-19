@@ -1,3 +1,7 @@
+"""SFZBuilder
+---
+Directory sample scanner
+"""
 from os import scandir
 from . import SampleAnalyzer
 
