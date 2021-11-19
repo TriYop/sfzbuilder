@@ -38,22 +38,23 @@ class SampleAnalyzer():
         "fff": 110
     }
 
-    KEYS_REX = r'_([A-G][#b]?)(-?[0-9])[_\.]'
-    ARTICULATION_REX= r'_((soft|hard)(est|er)?|medium|m[pf]|p{1,3}|f{1,3})[_\.]'
-    FILENAME_REX = r'^(' \
-                   r'[^_]+' \
-                   r'(_([A-G][#b]?)(-?[0-9]))?' \
-                   r'(_((soft|hard)(est|er)?|medium|m[pf]|p{1,3}|f{1,3}))?' \
-                   r'.(wav|aif|flac|ogg|mp3)' \
-                   r')$'
+    SAMPLE_NAME_REX = r'[^_]+'
+    KEYS_REX = r'([A-G][#b]?)(-?[0-9])'
+    ARTICULATION_REX= r'((soft|hard)(est|er)?|medium|m[pf]|p{1,3}|f{1,3})'
+    DRUM_REX = r'(kicka|kickb|kick|snarea|snareb|snare|hihatc|hihatf|hihato|tom[1-6]|crash1|crash2|ride1|ride2)'
+    SAMPLE_TYPE_REX = r'\.(wav|aif|flac|ogg|mp3)'
+    FIELD_SEPARATOR_REX=r'[_\.\-]'
+    FILENAME_REX = rf'^{SAMPLE_NAME_REX}(({FIELD_SEPARATOR_REX}({KEYS_REX}|{ARTICULATION_REX}|{DRUM_REX}))+{SAMPLE_TYPE_REX})$'
 
     logger = logging.getLogger("SampleAnalyzer")
+
 
     def __init__(self, filename:str):
         self.sample_filename = filename
 
     def _get_sample_key(self) -> int:
-        m = re.search(self.KEYS_REX, self.sample_filename)
+        rex= rf'{self.FIELD_SEPARATOR_REX}{self.KEYS_REX}{self.FIELD_SEPARATOR_REX}'
+        m = re.search(rex, self.sample_filename)
         pitch = 60
         if m is not None:
             keydef= m.group(1)
@@ -63,8 +64,8 @@ class SampleAnalyzer():
         return pitch
 
     def _get_sample_vel(self):
-
-        m = re.search(self.ARTICULATION_REX, self.sample_filename)
+        rex = rf'{self.FIELD_SEPARATOR_REX}{self.ARTICULATION_REX}{self.FIELD_SEPARATOR_REX}'
+        m = re.search(rex, self.sample_filename)
         velocity = 100
         if m is not None:
             veldef = m.group(1)
