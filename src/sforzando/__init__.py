@@ -1,3 +1,4 @@
+""" sforzando export module"""
 from .control import *
 from .group import *
 from .region import *
