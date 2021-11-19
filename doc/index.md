@@ -1,4 +1,4 @@
-# folder2sfz documentation home
+# SFZBuilder documentation home
 
 ---
 ## Where is the sfz file generated ?
@@ -6,7 +6,7 @@
 The sfz file is generated in the parent folder of the samples directory. 
 It is named after the samples directory with appended `.sfz` suffix
 
-    python3 folder2sfz.py /home/user/samples/PIANO
+    python3 SFZBuilder.py /home/user/samples/PIANO
 
 will scan `PIANO` folder in `/home/user/samples/` and generate 
 `/home/user/samples/PIANO.sfz` file
