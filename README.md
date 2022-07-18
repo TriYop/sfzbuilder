@@ -23,3 +23,6 @@ It aims to automate SFZ sound banks creation using sample filenames naming conve
       -h, --help  show this help message and exit
 
 more information available in [documentation](doc/index.md)
+
+To read more about the origins of this project, please read [this article](https://blog.yvanjanet.net/2021/11/)
+
