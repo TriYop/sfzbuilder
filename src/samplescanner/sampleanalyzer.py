@@ -24,12 +24,18 @@ class SampleAnalyzer():
         self.sample_filename = filename
 
     def _get_sample_key(self) -> int:
+        # check for sample in A#4 format
         m = re.search(r'_([A-G][#b]?)(-?[0-9])[_\.]', self.sample_filename)
         pitch = 60
         if m is not None:
             keydef= m.group(1)
             octave= int(m.group(2))
             pitch= self.KEYS.get(keydef, 0) + 12*(octave+1)
+        else:
+            # check if sample key in filename
+            m = re.search(r'^0?(\d{2})-.*$', self.sample_filename)
+            if m is not None:
+                pitch= int(m.group(1))
 
         return pitch
 

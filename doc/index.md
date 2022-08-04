@@ -30,3 +30,15 @@ valid sample names would be:
     piano_D3.mp3
     piano_D#3.ogg
 
+As an enhancement (to be able to import GrandOrgue samplesets https://github.com/GrandOrgue/grandorgue), another common syntax is also allowed:
+
+    [key_number]-[sample_name].[extension]
+
+where 
+- `key_number` is the MIDI key number from 0 to 127 and may be formatted on two or three digits.
+- `sample_name` follows `sample_group_name` naming convention
+-  `extension` is one of wav, aif, flac, mp3, ogg (to match sfz players supported formats)
+
+## Limits and future evolutions
+
+As of now, samples are bound to only a single keyboard note. So if you want to sample less notes to keep your sampleset light, you will still have to manually fix mapping
