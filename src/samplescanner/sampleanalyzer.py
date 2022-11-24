@@ -5,16 +5,16 @@ class SampleAnalyzer():
 
     KEYS = {
         "C": 0 ,
-        "C#": 1, "Db": 1,
+        "C#": 1, "Db": 1,"#C":1,
         "D": 2,
-        "D#": 3, "Eb": 3,
+        "D#": 3, "Eb": 3,"#D":3,
         "E": 4,
         "F": 5,
-        "F#": 6, "Gb": 6,
+        "F#": 6, "Gb": 6,"#F": 6,
         "G": 7,
-        "G#": 8, "Ab": 8,
+        "G#": 8, "Ab": 8,"#G": 8,
         "A": 9,
-        "A#": 10, "Bb": 10,
+        "A#": 10, "Bb": 10, "#A": 10,
         "B": 11,
     }
 
@@ -25,7 +25,7 @@ class SampleAnalyzer():
 
     def _get_sample_key(self) -> int:
         # check for sample in A#4 format
-        m = re.search(r'_([A-G][#b]?)(-?[0-9])[_\.]', self.sample_filename)
+        m = re.search(r'[_ \-](#?[A-G][#b]?)(-?[0-9])[_\.\- ]', self.sample_filename)
         pitch = 60
         if m is not None:
             keydef= m.group(1)
