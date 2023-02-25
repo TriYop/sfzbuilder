@@ -20,7 +20,7 @@ class SFZGroup():
     def __repr__(self):
         params = {key[1:]: value for key, value in self.__dict__.items() if value is not None and key.startswith('_')}
         _params = " ".join([f"{key}={params[key]}" for key in params])
-        _regions = "\n".join([str(region) for region in sorted(self.regions,key=lambda x : x._pitch_keycenter)])
+        _regions = "\n".join([str(region) for region in sorted(self.regions,key=lambda x : f'{x._pitch_keycenter:x}:{x._lovel:x}' )])
         return f"  <group> {_params}\n\n{_regions}"
 
     # def set_param(self, param_name, param_value):

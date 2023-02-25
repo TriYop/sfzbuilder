@@ -13,7 +13,7 @@ class SFZRegion():
         self._loop_mode = loop
         self._amp_velcurve_127 = None
         self._ampeg_attack = None
-        self._sample = sample_path
+        self._sample = sample_path.replace('/','\\')
 
     def __repr__(self):
         _content = f"<region>"

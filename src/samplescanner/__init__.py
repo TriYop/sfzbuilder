@@ -1,5 +1,9 @@
+from .exceptions import AnalyzerException, PitchNotDeterminedException
+from .sample import Sample
 from .sampleanalyzer import SampleAnalyzer
-from .directoryscanner import DirectoryScanner
+from .namingsampleanalyzer import NamingSampleAnalyzer
+from .signalsampleanalyzer import SignalSampleAnalyzer
+from .sampleanalyzerchain import SampleAnalyzerChain
 
 
 SAMPLE_FORMAT_OGG = 'ogg'
