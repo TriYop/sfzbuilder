@@ -37,7 +37,8 @@ class NamingSampleAnalyzer(SampleAnalyzer):
     PITCH_PATTERN_MIDINOTE = r'^0?(\d{2})-.*$'
 
     # Sample velocity pattern
-    VEL_PATTERN = r'[_\.\- ](fff|ff|f|mf|mp|p|pp|ppp)[_\.\- ]'
+    VELS = "|".join(VELOCITIES.keys())
+    VEL_PATTERN = r'[_\.\- ](' + VELS + r')[_\.\- ]'
 
     DEFAULT_PITCH = 60
 
@@ -87,3 +88,10 @@ class NamingSampleAnalyzer(SampleAnalyzer):
         else:
             raise AnalyzerException()
         return velocity
+
+    def find_loop_points(self, filename: str) -> (int, int):
+        """ Identify potential loop points for sample
+        :param filename:
+        :return: a tuple containing start and end points
+        """
+        return (-1, -1)
