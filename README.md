@@ -12,6 +12,7 @@ It aims to automate SFZ sound banks creation using sample filenames naming conve
 
 ## How to use it ?
 
+```
     usage: SFZBuilder.py [-h] -i PATH [-o OUTPUT] [-d] [-l] [-v]
 
 Builds a SFZ from a directory containing samples
@@ -25,6 +26,7 @@ optional arguments:
   -d, --drums           enhance generated soundfont for drums
   -l, --looping         try to identify looping points
   -v, --verbose         Display verbose output
+```
 
 more information available in [documentation](doc/index.md)
 

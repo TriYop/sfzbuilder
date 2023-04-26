@@ -6,16 +6,16 @@
 The sfz file is generated in the parent folder of the samples directory. 
 It is named after the samples directory with appended `.sfz` suffix
 
-    python3 SFZBuilder.py /home/user/samples/PIANO
+    python3 SFZBuilder.py -i /home/user/samples/PIANO -o /home/user/PIANO.sfz
 
 will scan `PIANO` folder in `/home/user/samples/` and generate 
-`/home/user/samples/PIANO.sfz` file
+`/home/user/PIANO.sfz` file
 
 ## How to name samples 
 
 In order to be efficiently processed, samples must follow the following naming rule :
 
-    [sample_group_name]_[sample_key].[extension]
+    [sample_group_name]_[sample_key]_[sample_velocity].[extension]
     
 where 
 - `sample_group_name` is in almost free form even if ascii alphanum is strongly encouraged 
@@ -25,9 +25,9 @@ an octave number from -1 (minus one) to 9 (nine).
 
 valid sample names would be:
 
-    piano_C3.wav
-    piano_Db3.aif
-    piano_D3.mp3
+    piano_C3_ff.wav
+    piano_Db3_mf.aif
+    piano_D3_pp.mp3
     piano_D#3.ogg
 
 As an enhancement (to be able to import GrandOrgue samplesets https://github.com/GrandOrgue/grandorgue), another common syntax is also allowed:
