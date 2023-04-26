@@ -1,5 +1,5 @@
 
-class Control():
+class SFZControl():
     def __init__(self):
         self.params = dict()
 
