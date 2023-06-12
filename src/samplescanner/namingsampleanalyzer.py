@@ -84,7 +84,7 @@ class NamingSampleAnalyzer(SampleAnalyzer):
         m = re.search(self.VEL_PATTERN, filename)
         if m is not None:
             veldef = m.group(1)
-            velocity = self.KEYS.get(veldef, 0)
+            velocity = self.VELOCITIES.get(veldef, 0)
         else:
             raise AnalyzerException()
         return velocity
